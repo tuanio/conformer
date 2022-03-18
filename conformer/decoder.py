@@ -16,9 +16,6 @@ import torch.nn as nn
 from torch import Tensor
 from typing import Tuple
 
-from kospeech.models.modules import Linear
-
-
 class DecoderRNNT(nn.Module):
     """
     Decoder of RNN-Transducer
@@ -79,7 +76,7 @@ class DecoderRNNT(nn.Module):
             dropout=dropout_p,
             bidirectional=False,
         )
-        self.out_proj = Linear(hidden_state_dim, output_dim)
+        self.out_proj = nn.Linear(hidden_state_dim, output_dim)
 
     def count_parameters(self) -> int:
         """ Count parameters of encoder """
